@@ -113,3 +113,28 @@ function initializeProjects() {
         });
     });
   }
+
+
+
+
+
+// invocking all our "initialize" methods
+  $(document).ready(function(){
+    // jQuery starts
+    initializeTeams()
+    .then(initializeEmployees)
+    .then(initialize)
+    .then(function(){
+        // apply the bindings (applybindings) to the document using the "viewModel"
+        ko.applyBindings(viewModel);
+        // use jQuery to select all "select" elements with class
+        $("select.multiple").multipleSelect({filter: true});
+        // use jQuery to select all "select elements with the class "single"
+        // and invoke the following method: .multipleSelect({single: true, filter: true})
+        $("select.single").multipleSelect({single: true, filter: true});
+    })
+    .catch(function(err){
+        console.log("error: " + err);
+        showGenericModal("Error", err);
+    });
+  });
