@@ -5,7 +5,7 @@ const VERBOSE = false;
 var viewModel = {
     teams = ko.observableArray([]),
     employees = ko.observableArray([]),
-    projects = ko.observableArray([]);
+    projects = ko.observableArray([])
 };
 
 // show	generic modal
