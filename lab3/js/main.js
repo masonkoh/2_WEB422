@@ -1,11 +1,11 @@
 const urlString = "https://nameless-harbor-59273.herokuapp.com/";
 const VERBOSE = false;
 
-// defining a viewModel
+// Defining a viewModel
 var viewModel = {
-    teams = ko.observableArray([]),
-    employees = ko.observableArray([]),
-    projects = ko.observableArray([])
+    teams: ko.observableArray([]),
+    employees: ko.observableArray([]),
+    projects: ko.observableArray([])
 };
 
 // show	generic modal
@@ -90,51 +90,54 @@ function initializeEmployees() {
 // by issuing an AJAX call to your Teams API
 function initializeProjects() {
     if (VERBOSE) console.log("main.js:::initializeProjects()");
-    return new Promise(function(resolve, reject) {
-      // request data to REST server with jQuery-ajax
-      $.ajax({
-        url: urlString + "projects",
-        method: "GET",
-        contentType: "application/json"
-      })
-        .done(function(data) {
-          // Assign the results to the "viewModel" variable
-          viewModel.projects = ko.mapping.fromJS(data);
-          if (VERBOSE)
-            console.log(
-              "main.js:::initializeProjects():::" + viewModel.projects().length
-            );
-          resolve();
+    return new Promise(function (resolve, reject) {
+        // request data to REST server with jQuery-ajax
+        $.ajax({
+            url: urlString + "projects",
+            method: "GET",
+            contentType: "application/json"
         })
-        .fail(function(err) {
-          // If the AJAX call fails, return reject function
-          if (VERBOSE) console.log("error: " + err.statusText);
-          reject("Error loading the team data.");
-        });
+            .done(function (data) {
+                // Assign the results to the "viewModel" variable
+                viewModel.projects = ko.mapping.fromJS(data);
+                if (VERBOSE)
+                    console.log(
+                        "main.js:::initializeProjects():::" + viewModel.projects().length
+                    );
+                resolve();
+            })
+            .fail(function (err) {
+                // If the AJAX call fails, return reject function
+                if (VERBOSE) console.log("error: " + err.statusText);
+                reject("Error loading the team data.");
+            });
     });
-  }
+}
 
 
 
 
 
-// invocking all our "initialize" methods
-  $(document).ready(function(){
-    // jQuery starts
+  // invoking all our "initialize" methods
+  $(document).ready(function() {
+    // start jQuery
+  
+    // Promises and Chaining Promises are used
     initializeTeams()
-    .then(initializeEmployees)
-    .then(initialize)
-    .then(function(){
+      .then(initializeEmployees)
+      .then(initializeProjects)
+      .then(function() {
         // apply the bindings (applybindings) to the document using the "viewModel"
         ko.applyBindings(viewModel);
-        // use jQuery to select all "select" elements with class
-        $("select.multiple").multipleSelect({filter: true});
-        // use jQuery to select all "select elements with the class "single"
-        // and invoke the following method: .multipleSelect({single: true, filter: true})
-        $("select.single").multipleSelect({single: true, filter: true});
-    })
-    .catch(function(err){
+        // Use jQuery to select all "select" elements with class
+        // "multiple" and invoke the following method:.multipleSelect({ filter: true });
+        $("select.multiple").multipleSelect({ filter: true });
+        // Use jQuery to select all "select" elements with class "single"
+        // and invoke the following method: .multipleSelect({ single: true, filter: true });
+        $("select.single").multipleSelect({ single: true, filter: true });
+      })
+      .catch(function(err) {
         console.log("error: " + err);
         showGenericModal("Error", err);
-    });
+      });
   });
