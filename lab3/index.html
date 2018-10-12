@@ -28,28 +28,56 @@
 
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-                <!-- brand and toggle get grouped for better mobile display-->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Assignment 3 - Team Details</a>
-                </div>
-                <!-- Collect the nav links, form, and other content for toggling-->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                </div><!-- /.navbar-collapse-->
-            </div><!-- /.container-fluid-->
+            <!-- brand and toggle get grouped for better mobile display-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Assignment 3 - Team Details</a>
+            </div>
+            <!-- Collect the nav links, form, and other content for toggling-->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            </div><!-- /.navbar-collapse-->
+        </div><!-- /.container-fluid-->
     </nav>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><strong>[Team Name]</strong><button class="btn btn-primary btn-xs pull-right">Save</button></div>
-                    <div class="panel-body">
+            <div style="display: none;" data-bind="visible:true, foreach: teams">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong data-bind="text: TeamName"></strong>
+                            <button class="btn btn-primary btn-xs pull-right" data-bind="click:saveTeam">Save</button>
+                        </div>
+                        <div class="panel-body">
+                            <!-- 
+                                        • <h5> element with the text "Team Lead" 
+                                        • <select> element with the class "single" 
+                                        • <h5> element with the text "Team Members" 
+                                        • <select multiple> element with the class "multiple" 
+                                        • <h5> element with the text "Projects" 
+                                        • <select multiple> element with the class "multiple"  
+                                    -->
                             <h5>Team Lead</h5>
-                            <select class="single"></select>
-                            <h5>Team Members</h5>
-                            <select multiple class="multiple"></select>
-                            <h5>Projects</h5>
-                            <select multiple class="multiple"></select>
+                            <select class="single" data-bind="
+                                    value:TeamLead, 
+                                    options:$parent.employees, 
+                                    optionsText:function(item) { return ko.unwrap(item.FirstName) + ' ' + ko.unwrap(item.LastName) }, 
+                                    optionsValue:function(item) { return item._id }">
+                            </select>
+                            <h5>Team Member</h5>
+                            <select multiple class="multiple" data-bind=" 
+                                    options:$parent.employees,
+                                    selectedOptions:Employees,                                
+                                    optionsText:function(item) { return ko.unwrap(item.FirstName) + ' ' + ko.unwrap(item.LastName) }, 
+                                    optionsValue:function(item) { return item._id } ">
+                            </select>
+                            <h5>Project</h5>
+                            <select multiple class="multiple" data-bind="
+                                    options:$parent.projects,                                
+                                    selectedOptions:Projects, 
+                                    optionsText:function(item) { return item.ProjectName }, 
+                                    optionsValue:function(item) { return item._id } ">
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,16 +88,16 @@
 
 
     <div class="modal fade" tabindex="-1" role="dialog" id="genericModal">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
                 </div>
-                <div class="modal-body">        </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
+                <div class="modal-body"> </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
 
