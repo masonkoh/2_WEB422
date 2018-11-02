@@ -4,13 +4,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-inverse navbar-fixed-top">
+        {/* <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
               <a className="navbar-brand" href="/">WEB422 - Project Portal</a>
             </div>
           </div>
-        </nav>
+        </nav> */}
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-3 col-md-2  sidebar">
