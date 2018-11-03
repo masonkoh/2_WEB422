@@ -19,13 +19,6 @@ class EmployeesPanel extends Component {
         });
     }
 
-    // handleOnClick(employeeId){
-    //     this.setState({ 
-    //         redirect: true,
-    //         targetEmployee: employeeId 
-    //     });
-    // }
-
     componentWillUnmount() {
 
     }
