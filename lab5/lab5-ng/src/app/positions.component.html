@@ -9,7 +9,24 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      positions works! {{positions | json}}
+      <div class="table-responsive">
+        <table class="table table-condensed table-hover">
+          <thead>
+            <tr>
+              <th>Position Title</th>
+              <th>Description</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let position of positions">
+              <td>{{position.PositionName}}</td>
+              <td>{{position.PositionDescription}}</td>
+              <td>${{position.PositionBaseSalary | number:'.2'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

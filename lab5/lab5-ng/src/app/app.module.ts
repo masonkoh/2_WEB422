@@ -11,6 +11,8 @@ import { HomeComponent } from './home.component';
 import { EmployeesComponent } from './employees.component';
 import { PositionsComponent } from './positions.component';
 import { PageNotFoundComponent } from './page-not-found.component';
+import { EmployeeService } from './employee.service';
+import { PositionService } from './position.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [EmployeeService, PositionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
