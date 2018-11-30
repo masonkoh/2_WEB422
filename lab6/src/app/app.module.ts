@@ -13,6 +13,8 @@ import { PositionsComponent } from "./positions.component";
 import { PageNotFoundComponent } from "./page-not-found.component";
 import { EmployeeService } from "./data/employee.service";
 import { PositionService } from "./position.service";
+import { EmployeeComponent } from './employee/employee.component';
+import { PositionComponent } from './position/position.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { PositionService } from "./position.service";
     HomeComponent,
     EmployeesComponent,
     PositionsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmployeeComponent,
+    PositionComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [EmployeeService, PositionService],
