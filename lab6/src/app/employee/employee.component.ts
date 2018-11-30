@@ -45,9 +45,14 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
       setTimeout(() => {
         this.successMessage = false;
-      }, 2500)
-
-    });
+      }, 2500);
+    },
+      () => {
+        this.failMessage = true;
+        setTimeout(() => {
+          this.failMessage = false;
+        }, 2500);
+      });
   }
 
   ngOnDestroy() {
