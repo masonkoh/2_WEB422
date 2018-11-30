@@ -48,6 +48,15 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     );
   }
 
+  routeEmployee(id: string) {
+    this.router.navigate(["/employee", id]);
+  }
+
+  // onEmployeeSearchKeyUp(event: any) {
+  //   let substring: string = event.target.value.toLowerCase();
+  //   this.filteredEmployees = this.employees.filter((e) => ((e.FirstName.toLowerCase().indexOf(substring) !== -1) || (e.LastName.toLowerCase().indexOf(substring) !== -1)))
+  // }
+
   ngOnDestroy() {
     this.getEmployeeSub.unsubscribe();
   }
