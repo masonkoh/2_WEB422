@@ -27,6 +27,9 @@ export class PositionsComponent implements OnInit, OnDestroy {
     })
   }
 
+  routePosition(id: string) {
+    this.route.navigate(["/position", id]);
+  }
 
   ngOnDestroy() {
     this.getPositionSub.unsubscribe();
