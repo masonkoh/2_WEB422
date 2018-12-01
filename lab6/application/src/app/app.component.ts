@@ -5,7 +5,7 @@
 * distributed to other students.
 *
 * Name: ___Youngmin Ko___ Student ID: __019155159____ Date: __NOV.30.2018___
-*
+* heroku link: https://rocky-woodland-76935.herokuapp.com/home
 ********************************************************************************/
 
 import { Component } from '@angular/core';
