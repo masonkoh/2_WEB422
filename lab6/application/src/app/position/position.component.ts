@@ -13,7 +13,7 @@ export class PositionComponent implements OnInit, OnDestroy {
   private paramSubscription: any;
   private positionSubscription: any;
   private savePositionSubscription: any;
-  private position: Position;
+  position: Position;
   private successMessage = false;
   private failMessage = false;
 
