@@ -46,6 +46,10 @@
     <br> Morbi libero elit elementum quis faucibus ac, condimentum quis nibh.</p>
 </div>
 
+<input class="form-control" id="EmployeeSearch" name="EmployeeSearch" type="text" placeholder="Search Employees by Full Name or Position"
+  (keyup)="onEmployeeSearchKeyUp($event)" /><br />
+
+
 <div class="table-responsive">
   <table class="table table-condensed table-hover">
     <thead>
@@ -58,22 +62,24 @@
     </thead>
     <tbody>
 
-      <!-- <tr *ngFor="let employee of filteredEmployees" (click)="routeEmployee(employee._id)" [hidden]="hidden">
-        *ngFor="let employee of employees" (click)="routeEmployee(employee._id)"
+
+      <tr *ngFor="let employee of filteredEmployees" (click)="routeEmployee(employee._id)" [hidden]="hidden">
+        <!-- *ngFor="let employee of employees" (click)="routeEmployee(employee._id)" -->
         <td>{{employee.FirstName}} {{employee.LastName}}</td>
         <td>{{employee.AddressStreet}}. {{employee.AddressState}}, {{employee.AddressCity}}.
           {{employee.AddressZip}}</td>
         <td>{{employee.PhoneNum}} ext: {{employee.Extension}}</td>
         <td>{{employee.HireDate | date:'longDate'}}</td>
-      </tr> -->
+      </tr>
 
-      <tr *ngFor="let employee of employees" (click)="routeEmployee(employee._id)" [hidden]="hidden">
-        <!-- *ngFor="let employee of employees" (click)="routeEmployee(employee._id)" -->
+      <!-- <tr *ngFor="let employee of employees" (click)="routeEmployee(employee._id)" [hidden]="hidden">
+        *ngFor="let employee of employees" (click)="routeEmployee(employee._id)"
         <td>{{employee.FirstName}} {{employee.LastName}}</td>
         <td>{{employee.AddressStreet}}. {{employee.AddressState}}, {{employee.AddressCity}}. {{employee.AddressZip}}</td>
         <td>{{employee.PhoneNum}} ext: {{employee.Extension}}</td>
         <td>{{employee.HireDate | date:'longDate'}}</td>
-      </tr>
+      </tr> -->
+
     </tbody>
   </table>
 </div>

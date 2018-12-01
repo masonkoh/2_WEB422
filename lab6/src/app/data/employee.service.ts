@@ -6,7 +6,7 @@ import { EmployeeRaw } from "./employeeRaw";
 
 @Injectable()
 export class EmployeeService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(
